@@ -1,7 +1,35 @@
+a:hover {
+    text-decoration: none;
+}
+
 input.form-control {
     margin-bottom: 5px;
 }
 
 body {
-    padding-top: 36px;
+    padding-top: 60px;
 }
+
+.navbar-icon-right {
+    margin-top: 16px;
+    margin-right: 14px;
+}
+
+.list-group-item {
+    border: none;
+}
+
+.relative-position {
+    position: relative;
+}
+
+.absolute-position {
+    position: absolute;
+}
+
+.list-element-menu {
+    top: 0px;
+    right: 0px;
+    background-color: white;
+}
+
