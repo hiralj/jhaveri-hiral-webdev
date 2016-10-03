@@ -6,12 +6,8 @@ module.exports = function(app)
 
     var connectionString = 'mongodb://127.0.0.1:27017/test';
 
-    if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD) {
-        connectionString = process.env.OPENSHIFT_MONGODB_DB_USERNAME + ":" +
-            process.env.OPENSHIFT_MONGODB_DB_PASSWORD + "@" +
-            process.env.OPENSHIFT_MONGODB_DB_HOST + ':' +
-            process.env.OPENSHIFT_MONGODB_DB_PORT + '/' +
-            process.env.OPENSHIFT_APP_NAME;
+    if(process.env.NODE_ENV == "production") {
+        connectionString = "mongodb://heroku_p5fswtwk:j7pg3itpfkgth3uu2m9tic90kl@ds019491.mlab.com:19491/heroku_p5fswtwk";
     }
 
     var mongoose = require("mongoose");
