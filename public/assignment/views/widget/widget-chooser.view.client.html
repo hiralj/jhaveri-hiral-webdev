@@ -1,0 +1,28 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                Choose Widget
+            </a>
+        </div>
+    </div>
+</nav>
+
+<ul class="list-group">
+    <div ng-repeat="widgetType in model.widgetTypes">
+        <li class="list-group-item">
+            <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widgetType._id}}"> {{widgetType.widgetName}} </a>
+        </li>
+    </div>
+</ul>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a href="#/user/{{model.userId}}" class="pull-right navbar-icon-right">
+                <span class="glyphicon glyphicon-user"></span>
+            </a>
+        </div>
+    </div>
+</nav>

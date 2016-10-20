@@ -1,21 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Profile</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="css/style.css" rel="stylesheet"/>
-</head>
-<body>
-
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">Profile</a>
-            <a href="profile.html" class="pull-right navbar-icon-right">
+        <div class="navbar-text pull-right">
+            <a ng-click="model.update(model.user)" class="">
                 <span class="glyphicon glyphicon-ok"></span>
             </a>
+        </div>
+        <div class="navbar-header">
+            <a class="navbar-brand">Profile</a>
         </div>
     </div>
 </nav>
@@ -31,7 +22,7 @@
                    id="username"
                    name="username"
                    placeholder="Username"
-                   value="hiralj"/>
+                   ng-model="model.user.username"/>
         </div>
         <div class="form-group">
             <label for="email">
@@ -42,7 +33,7 @@
                    id="email"
                    name="email"
                    placeholder="alice@wonderland.com"
-                   value="jhaveri.h@husky.neu.edu"/>
+                   ng-model="model.user.email"/>
         </div>
         <div class="form-group">
             <label for="first-name">
@@ -53,7 +44,7 @@
                    id="first-name"
                    name="first-name"
                    placeholder="Alice"
-                   value="Hiral"/>
+                   ng-model="model.user.firstName"/>
         </div>
         <div class="form-group">
             <label for="last-name">
@@ -64,14 +55,13 @@
                    id="last-name"
                    name="last-name"
                    placeholder="Wonderland"
-                   value="Jhaveri"/>
+                   ng-model="model.user.lastName"/>
         </div>
     </form>
 
-    <a class="btn btn-primary btn-block"
-       href="website-list.html">Websites</a>
+    <a href="#/user/{{model.userId}}/website" class="btn btn-primary btn-block">Websites</a>
     <a class="btn btn-danger  btn-block"
-       href="login.html">Logout</a>
+       href="#/login">Logout</a>
 </div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
@@ -83,5 +73,3 @@
         </div>
     </div>
 </nav>
-</body>
-</html>
