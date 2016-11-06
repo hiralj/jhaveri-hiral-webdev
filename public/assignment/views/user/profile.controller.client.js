@@ -9,12 +9,25 @@
         vm.update = update;
 
         function init() {
-            vm.user = UserService.findUserById(vm.userId);
+            var promise = UserService.findUserById(vm.userId);
+            promise
+                .success(function(user){
+                    vm.user = user;
+                })
+                .error(function(){
+
+                });
         }
 
         function update(user) {
-            UserService.updateUser(vm.userId, user);
-            $location.url("/user/" + vm.userId);
+            var promise = UserService.updateUser(vm.userId, user);
+            promise
+                .success(function(){
+                    $location.url("/user/" + vm.userId);
+                })
+                .error(function(){
+
+                });
         }
 
         init();

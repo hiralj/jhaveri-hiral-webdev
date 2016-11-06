@@ -12,18 +12,25 @@
                 vm.error = "Passwords do not match";
                 return;
             }
-            user = {}
+            user = {};
             user.username = username;
             user.password = password;
             user.firstName = firstName;
             user.lastName = lastName;
             user.email = email;
-            user = UserService.createUser(user);
-            if(user) {
-                $location.url("/");
-            } else {
-                vm.error = "Username taken!"
-            }
+
+            var promise = UserService.createUser(user);
+            promise
+                .success(function(user){
+                    if(user) {
+                        $location.url("/");
+                    } else {
+                        vm.error = "Username taken!"
+                    }
+                })
+                .error(function(){
+
+                });
         }
     }
 })();

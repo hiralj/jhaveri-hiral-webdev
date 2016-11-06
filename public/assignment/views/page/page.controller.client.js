@@ -11,7 +11,14 @@
         vm.websiteId = parseInt($routeParams["wid"]);
 
         function init() {
-            vm.pages = PageService.findPageByWebsiteId(vm.websiteId);
+            PageService
+                .findPageByWebsiteId(vm.websiteId)
+                .success(function(pages){
+                    vm.pages = pages;
+                })
+                .error(function(){
+
+                });
         }
         init();
     }
@@ -23,8 +30,14 @@
         vm.createPage = createPage;
 
         function createPage(page) {
-            PageService.createPage(vm.websiteId, page);
-            $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page");
+            PageService
+                .createPage(vm.websiteId, page)
+                .success(function(){
+                    $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page");
+                })
+                .error(function(){
+
+                });
         }
     }
 
@@ -37,17 +50,36 @@
         vm.deletePage = deletePage;
 
         function init() {
-            vm.page = PageService.findPageById(vm.pageId);
+            PageService
+                .findPageById(vm.pageId)
+                .success(function(page){
+                    vm.page = page;
+                })
+                .error(function(){
+
+                });
         }
 
         function updatePage(page) {
-            PageService.updatePage(vm.pageId, page);
-            $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page");
+            PageService
+                .updatePage(vm.pageId, page)
+                .success(function(){
+                    $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page");
+                })
+                .error(function(){
+
+                });
         }
 
         function deletePage() {
-            PageService.deletePage(vm.pageId);
-            $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page");
+            PageService
+                .deletePage(vm.pageId)
+                .success(function(){
+                    $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page");
+                })
+                .error(function(){
+
+                });
         }
 
         init();
