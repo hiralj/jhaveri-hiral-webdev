@@ -12,7 +12,9 @@
     </div>
 </nav>
 
-<ul class="list-group">
+<ul jga-sortable
+    jga-sortable-callback="model.sortItem(start, end)"
+    class="list-group">
     <div ng-switch="widget.widgetType"
          ng-repeat="widget in model.widgets">
         <li class="list-group-item">

@@ -12,6 +12,7 @@
         vm.pageId = parseInt($routeParams["pid"]);
         vm.checkSafeHtml = checkSafeHtml;
         vm.checkSafeYouTubeUrl = checkSafeYouTubeUrl;
+        vm.sortItem = sortItem;
 
         function init() {
             WidgetService
@@ -33,6 +34,12 @@
             var id = parts[parts.length - 1];
             var url = "https://www.youtube.com/embed/" + id;
             return $sce.trustAsResourceUrl(url);
+        }
+
+        function sortItem(start, end) {
+            console.log("Hello from controller :)");
+            console.log("My start " + start + " End " + end);
+            WidgetService.sortItem(vm.pageId, start, end);
         }
 
         init();

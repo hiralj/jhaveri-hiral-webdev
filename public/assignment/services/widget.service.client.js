@@ -10,7 +10,8 @@
             findWidgetById: findWidgetById,
             updateWidget: updateWidget,
             deleteWidget: deleteWidget,
-            getWidgetTypes: getWidgetTypes
+            getWidgetTypes: getWidgetTypes,
+            sortItem: sortItem
         };
 
         return api;
@@ -36,7 +37,11 @@
         }
 
         function getWidgetTypes() {
-            return $http.get('api/widget/type');
+            return $http.get('/api/widget/type');
+        }
+
+        function sortItem(pageId, start, end) {
+            return $http.put('/page/' + pageId + '/widget?initial=' + start + '&final=' + end);
         }
     }
 })();
