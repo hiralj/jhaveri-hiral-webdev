@@ -1,13 +1,16 @@
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
+        <div class="navbar-text pull-right">
+            <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/new">
+                <span class="glyphicon glyphicon-plus"></span>
+            </a>
+        </div>
         <div class="navbar-header">
             <a class="navbar-brand" href="#/user/{{model.userId}}/website">
                 <span class="glyphicon glyphicon-chevron-left"></span>
                 Pages
             </a>
-            <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/new" class="pull-right navbar-icon-right">
-                <span class="glyphicon glyphicon-plus"></span>
-            </a>
+
         </div>
     </div>
 </nav>

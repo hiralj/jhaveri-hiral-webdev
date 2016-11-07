@@ -1,12 +1,14 @@
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
+        <div class="navbar-text pull-right">
+            <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/new">
+                <span class="glyphicon glyphicon-plus"></span>
+            </a>
+        </div>
         <div class="navbar-header">
             <a class="navbar-brand" href="#/user/{{model.userId}}/website/{{model.websiteId}}/page">
-                <span class="glyphicon glyphicon-chevron-left">
+                <span class="glyphicon glyphicon-chevron-left"/>
                 Widgets
-            </a>
-            <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/new" class="pull-right navbar-icon-right">
-                <span class="glyphicon glyphicon-plus"></span>
             </a>
         </div>
     </div>
@@ -36,7 +38,8 @@
                 </div>
                 <div ng-switch-when="YOUTUBE">
                     <div class="embed-responsive embed-responsive-4by3">
-                        <iframe class="embed-responsive-item" width="560" height="315" ng-src="{{model.checkSafeYouTubeUrl(widget.url)}}"></iframe>
+                        <iframe class="embed-responsive-item" width="560" height="315"
+                                ng-src="{{model.checkSafeYouTubeUrl(widget.url)}}"></iframe>
                     </div>
                 </div>
                 <div class="absolute-position list-element-menu pull-right">
