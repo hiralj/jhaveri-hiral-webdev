@@ -17,7 +17,9 @@
                     stop: function(event, ui) {
                         //ui.item.find("a").show();
                         end = ui.item.index();
-                        console.log([start, end]);
+                        if(start >= end) {
+                            start--;
+                        }
                         scope.jgaSortableCallback({start: start, end: end});
                     }
                 });
