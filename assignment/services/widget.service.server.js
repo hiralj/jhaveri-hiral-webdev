@@ -31,7 +31,6 @@ module.exports = function (app) {
         }
     });
     var upload = multer({storage: storage});
-    // var upload = multer({ dest: __dirname+'/../../public/assignment/uploads' });
 
     app.post('/api/page/:pageId/widget', createWidget);
     app.get('/api/page/:pageId/widget', findAllWidgetsForPage);
@@ -117,14 +116,14 @@ module.exports = function (app) {
                 results.push(widgets[w]);
             }
         }
-        res.send(results);
+        res.json(results);
     }
 
     function findWidgetById(req, res) {
         var widgetId = parseInt(req.params.widgetId);
         for (var w in widgets) {
             if (widgets[w]._id === widgetId) {
-                res.send(widgets[w]);
+                res.json(widgets[w]);
                 return;
             }
         }
@@ -135,7 +134,7 @@ module.exports = function (app) {
         var widgetId = parseInt(req.params.widgetId);
         var widget = req.body;
         for (var w in widgets) {
-            if (widgets[w]._id === widgetId) {
+            if (widgets[w]._id == widgetId) {
                 if (widgets[w].widgetType === "HEADER") {
                     widgets[w].size = widget.size;
                     widgets[w].text = widget.text;
@@ -168,7 +167,7 @@ module.exports = function (app) {
             if (widgets[w].type)
                 result.push(widgets[w]);
         }
-        res.send(result);
+        res.json(result);
     }
 
     function sortWidget(req, res) {
@@ -185,8 +184,5 @@ module.exports = function (app) {
         (pageToActualIndex[end]
             , 0
             , widgets.splice(pageToActualIndex[start], 1)[0]);
-        console.log("From server");
-        console.log([pageId, start, end]);
-        console.log(pageToActualIndex);
     }
 };

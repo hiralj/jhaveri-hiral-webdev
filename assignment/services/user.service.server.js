@@ -27,7 +27,7 @@ module.exports = function(app) {
         user._id = next_id;
         next_id += 111;
         users.push(user)
-        res.send(user);
+        res.json(user);
     }
 
     function findUser(req, res) {
@@ -45,7 +45,7 @@ module.exports = function(app) {
         for(var u in users) {
             user = users[u];
             if(user.username === username && user.password === password) {
-                res.send(user);
+                res.json(user);
                 return;
             }
         }
@@ -57,7 +57,7 @@ module.exports = function(app) {
         for(var u in users) {
             user = users[u];
             if(user.username === username) {
-                res.send(user);
+                res.json(user);
                 return;
             }
         }
@@ -69,7 +69,7 @@ module.exports = function(app) {
         for(var u in users) {
             user = users[u];
             if(user._id === userId) {
-                res.send(user);
+                res.json(user);
                 return;
             }
         }

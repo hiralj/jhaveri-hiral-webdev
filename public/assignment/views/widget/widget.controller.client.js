@@ -37,8 +37,6 @@
         }
 
         function sortItem(start, end) {
-            console.log("Hello from controller :)");
-            console.log("My start " + start + " End " + end);
             WidgetService.sortItem(vm.pageId, start, end);
         }
 
@@ -98,9 +96,8 @@
         }
 
         function updateWidget(widget) {
-            widget._id = vm.widgetId;
             WidgetService
-                .updateWidget(widget)
+                .updateWidget(vm.widgetId, widget)
                 .success(function () {
                     $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget");
                 })

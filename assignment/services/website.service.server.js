@@ -33,14 +33,14 @@ module.exports = function (app) {
             if (websites[w].developerId === userId)
                 result.push(websites[w])
         }
-        res.send(result);
+        res.json(result);
     }
 
     function findWebsiteById(req, res) {
         var websiteId = parseInt(req.params.websiteId);
         for (var w in websites) {
             if (websites[w]._id === websiteId) {
-                res.send(websites[w]);
+                res.json(websites[w]);
                 return;
             }
         }

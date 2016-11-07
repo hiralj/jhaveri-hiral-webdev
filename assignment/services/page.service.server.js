@@ -29,14 +29,14 @@ module.exports = function(app) {
             if(pages[p].websiteId === websiteId)
                 result.push(pages[p]);
         }
-        res.send(result);
+        res.json(result);
     }
 
     function findPageById(req, res) {
         var pageId = parseInt(req.params.pageId);
         for(var p in pages) {
             if(pages[p]._id === pageId) {
-                res.send(pages[p]);
+                res.json(pages[p]);
                 return;
             }
         }
