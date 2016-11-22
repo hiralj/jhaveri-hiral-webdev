@@ -18,7 +18,7 @@ module.exports = function (app) {
 
     function createWebsite(req, res) {
         var website = req.body;
-        var userId = parseInt(req.params.userId);
+        var userId = req.params.userId;
         website._id = next_website_id;
         website.developerId = userId;
         next_website_id += 111;
@@ -27,7 +27,7 @@ module.exports = function (app) {
     }
 
     function findAllWebsitesForUser(req, res) {
-        var userId = parseInt(req.params.userId);
+        var userId = req.params.userId;
         var result = [];
         for (var w in websites) {
             if (websites[w].developerId === userId)
@@ -37,7 +37,7 @@ module.exports = function (app) {
     }
 
     function findWebsiteById(req, res) {
-        var websiteId = parseInt(req.params.websiteId);
+        var websiteId = req.params.websiteId;
         for (var w in websites) {
             if (websites[w]._id === websiteId) {
                 res.json(websites[w]);
@@ -48,7 +48,7 @@ module.exports = function (app) {
     }
 
     function updateWebsite(req, res) {
-        var websiteId = parseInt(req.params.websiteId);
+        var websiteId = req.params.websiteId;
         var website = req.body;
         for(var w in websites) {
             if(websites[w]._id === websiteId) {
@@ -61,7 +61,7 @@ module.exports = function (app) {
     }
 
     function deleteWebsite(req, res) {
-        var websiteId = parseInt(req.params.websiteId);
+        var websiteId = req.params.websiteId;
         for(var w in websites) {
             if (websites[w]._id == websiteId) {
                 websites.splice(w, 1);

@@ -13,7 +13,7 @@ module.exports = function(app) {
     app.delete('/api/page/:pageId', deletePage)
 
     function createPage(req, res) {
-        var websiteId = parseInt(req.params.websiteId);
+        var websiteId = req.params.websiteId;
         var page = req.body;
         page._id = next_page_id;
         page.websiteId = websiteId;
@@ -23,7 +23,7 @@ module.exports = function(app) {
     }
 
     function findAllPagesForWebsite(req, res) {
-        var websiteId = parseInt(req.params.websiteId);
+        var websiteId = req.params.websiteId;
         var result = [];
         for(var p in pages) {
             if(pages[p].websiteId === websiteId)
@@ -33,7 +33,7 @@ module.exports = function(app) {
     }
 
     function findPageById(req, res) {
-        var pageId = parseInt(req.params.pageId);
+        var pageId = req.params.pageId;
         for(var p in pages) {
             if(pages[p]._id === pageId) {
                 res.json(pages[p]);
@@ -44,7 +44,7 @@ module.exports = function(app) {
     }
 
     function updatePage(req, res) {
-        var pageId = parseInt(req.params.pageId);
+        var pageId = req.params.pageId;
         var page = req.body;
         for(var p in pages) {
             if(pages[p]._id === pageId) {
@@ -57,7 +57,7 @@ module.exports = function(app) {
     }
 
     function deletePage(req, res) {
-        var pageId = parseInt(req.params.pageId);
+        var pageId = req.params.pageId;
         for (var p in pages) {
             if (pages[p]._id === pageId) {
                 pages.splice(p, 1);

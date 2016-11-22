@@ -43,10 +43,10 @@ module.exports = function (app) {
 
 
     function uploadImage(req, res) {
-        var userId = parseInt(req.body.userId);
-        var websiteId = parseInt(req.body.websiteId);
-        var pageId = parseInt(req.body.pageId);
-        var widgetId = parseInt(req.body.widgetId);
+        var userId = req.body.userId;
+        var websiteId = req.body.websiteId;
+        var pageId = req.body.pageId;
+        var widgetId = req.body.widgetId;
         var width = req.body.width;
         var myFile = req.file;
 
@@ -80,7 +80,7 @@ module.exports = function (app) {
     }
 
     function createWidget(req, res) {
-        var pageId = parseInt(req.params.pageId);
+        var pageId = req.params.pageId;
         var widget = req.body;
         newwidget = {}
         newwidget._id = next_widget_id;
@@ -109,7 +109,7 @@ module.exports = function (app) {
     }
 
     function findAllWidgetsForPage(req, res) {
-        var pageId = parseInt(req.params.pageId);
+        var pageId = req.params.pageId;
         var results = [];
         for (var w in widgets) {
             if (widgets[w].pageId === pageId) {
@@ -120,7 +120,7 @@ module.exports = function (app) {
     }
 
     function findWidgetById(req, res) {
-        var widgetId = parseInt(req.params.widgetId);
+        var widgetId = req.params.widgetId;
         for (var w in widgets) {
             if (widgets[w]._id === widgetId) {
                 res.json(widgets[w]);
@@ -131,7 +131,7 @@ module.exports = function (app) {
     }
 
     function updateWidget(req, res) {
-        var widgetId = parseInt(req.params.widgetId);
+        var widgetId = req.params.widgetId;
         var widget = req.body;
         for (var w in widgets) {
             if (widgets[w]._id == widgetId) {
@@ -151,7 +151,7 @@ module.exports = function (app) {
     }
 
     function deleteWidget(req, res) {
-        var widgetId = parseInt(req.params.widgetId);
+        var widgetId = req.params.widgetId;
         for (var w in widgets) {
             if (widgets[w]._id === widgetId) {
                 widgets.splice(w, 1);
@@ -171,9 +171,9 @@ module.exports = function (app) {
     }
 
     function sortWidget(req, res) {
-        var pageId = parseInt(req.params.pageId);
-        var start = parseInt(req.query.initial);
-        var end = parseInt(req.query.final);
+        var pageId = req.params.pageId;
+        var start = req.query.initial;
+        var end = req.query.final;
         var pageToActualIndex = [];
         for (var w in widgets) {
             if (widgets[w].pageId === pageId) {
