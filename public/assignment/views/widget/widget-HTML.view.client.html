@@ -26,18 +26,22 @@
 <div class="container">
     <form>
         <div class="form-group">
-            <label for="text"> Text </label>
-            <textarea class="form-control"
-                      type="text"
-                      id="text"
-                      name="text"
-                      placeholder="Text"
-                      ng-model="model.widget.text"></textarea>
+            <div id="text"
+                 name="text"
+                 ng-model="model.widget.text"
+                 text-angular
+                 ta-toolbar="[['h1','h2','h3'],['bold','italics','underline','strikeThrough'],
+                         ['ul','ol'],['justifyLeft','justifyCenter','justifyRight','justifyFull'],
+                         ['indent','outdent'],['html']]">
+            </div>
+        </div>
+        <div class="form-group">
+            <a ng-hide="model.widget.wid" ng-click="model.deleteWidget()" class="btn btn-danger btn-block">
+                Delete
+            </a>
         </div>
     </form>
-    <a ng-hide="model.widget.wid" ng-click="model.deleteWidget()" class="btn btn-danger btn-block">
-        Delete
-    </a>
+
 </div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
