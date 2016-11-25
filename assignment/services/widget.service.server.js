@@ -25,7 +25,7 @@ module.exports = function (app, model) {
         {wid: "1", type: 'IMAGE'},
         {wid: "2", type: 'YOUTUBE'},
         {wid: "3", type: 'HTML'},
-        {wid: "4", type: 'INPUT'}
+        {wid: "4", type: 'TEXT'}
     ];
 
     var multer = require('multer'); // npm install multer --save
