@@ -11,8 +11,8 @@ module.exports = function (app, model) {
         model.userModel
             .findUserByUsername(user.username)
             .then(
-                function (user) {
-                    if (user) {
+                function (existingUser) {
+                    if (existingUser) {
                         res.json(null);
                     } else {
                         model.userModel

@@ -53,6 +53,7 @@
             WidgetService
                 .getWidgetTypes()
                 .success(function (widgetTypes) {
+                    // a widgetType has 'wid' and 'type'
                     vm.widgetTypes = widgetTypes;
                 })
                 .error(function () {
