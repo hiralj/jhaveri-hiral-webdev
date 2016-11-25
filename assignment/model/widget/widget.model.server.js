@@ -1,8 +1,17 @@
 module.exports = function () {
     var model = {};
+    var maxPriority;
     var mongoose = require("mongoose");
     var WidgetSchema = require("./widget.schema.server")();
     var WidgetModel = mongoose.model("WidgetModel", WidgetSchema);
+
+    var SampleSchema = mongoose.Schema({
+        name: String,
+        priority: Number
+    });
+
+    var SampleModel = mongoose.model("SampleModel", SampleSchema);
+
 
     var api = {
         setModel: setModel,
@@ -11,21 +20,27 @@ module.exports = function () {
         findWidgetById: findWidgetById,
         updateWidget: updateWidget,
         deleteWidget: deleteWidget,
-        reorderWidget: reorderWidget,
-        getWidgetTypes: getWidgetTypes
+        reorderWidget: reorderWidget
     };
     
     return api;
     
     function setModel(_model) {
         model = _model;
-        // WidgetModel.create({"type": "HEADING", "name": "Header", "category": true});
-        // WidgetModel.create({"type": "IMAGE", "name": "Image", "category": true});
-        // WidgetModel.create({"type": "YOUTUBE", "name": "YouTube", "category": true});
-        // WidgetModel.create({"type": "HTML", "name": "HTML", "category": true});
+        WidgetModel.find().sort({priority: -1})
+            .then(
+                function (widgets) {
+                    if(widgets.length > 0)
+                        maxPriority = widgets[0].priority + 1;
+                    else
+                        maxPriority = 1;
+                }
+            );
     }
     
     function createWidget(pageId, widget) {
+        widget.priority = maxPriority;
+        maxPriority++;
         return model.pageModel
             .findPageById(pageId)
             .then(
@@ -45,7 +60,7 @@ module.exports = function () {
             .findPageById(pageId)
             .then(
                 function (pageObj) {
-                    return WidgetModel.find({_page: pageObj});
+                    return WidgetModel.find({_page: pageObj}).sort({priority: 1});
                 }
             );
     }
@@ -66,11 +81,33 @@ module.exports = function () {
     }
     
     function reorderWidget(pageId, start, end) {
-        
-    }
-
-    function getWidgetTypes() {
-        // return WidgetModel.find({category: true});
-        return ['HEADING', 'IMAGE', 'YOUTUBE', 'HTML', 'INPUT'];
+        return model.pageModel
+            .findPageById(pageId)
+            .then(
+                function (pageObj) {
+                    WidgetModel.find({_page: pageObj}).sort({priority: 1})
+                        .then(
+                            function (widgets) {
+                                widgets[start].priority = widgets[end].priority;
+                                widgets[start].save();
+                                if(start < end) {
+                                    for(var w in widgets) {
+                                        if(w > start && w <= end) {
+                                            widgets[w].priority--;
+                                            widgets[w].save();
+                                        }
+                                    }
+                                } else {
+                                    for(var w in widgets) {
+                                        if(w >= end && w < start) {
+                                            widgets[w].priority++;
+                                            widgets[w].save();
+                                        }
+                                    }
+                                }
+                            }
+                        );
+                }
+            );
     }
 };
