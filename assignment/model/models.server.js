@@ -1,7 +1,14 @@
 module.exports = function () {
     var mongoose = require('mongoose');
-    mongoose.connect('mongodb://localhost/wam-fall-2016');
 
+    var connectionString = 'mongodb://127.0.0.1:27017/wam-fall-2016';
+
+    if(process.env.NODE_ENV == "production") {
+        connectionString = "mongodb://heroku_p5fswtwk:j7pg3itpfkgth3uu2m9tic90kl@ds019491.mlab.com:19491/heroku_p5fswtwk";
+    }
+
+    mongoose.connect(connectionString);
+    
     var userModel = require("./user/user.model.server")();
     var websiteModel = require("./website/website.model.server")();
     var pageModel = require("./page/page.model.server")();
