@@ -1,7 +1,6 @@
-module.exports = function () {
-    var mongoose = require("mongoose");
+module.exports = function (connection) {
     var UserSchema = require("./user.schema.server")();
-    var UserModel = mongoose.model("UserModel", UserSchema);
+    var UserModel = connection.model("UserModel", UserSchema);
 
     var api = {
         createUser: createUser,

@@ -1,0 +1,11 @@
+input.form-control {
+    margin-bottom: 5px;
+}
+
+.slot-label {
+    font-weight: normal;
+}
+
+td {
+    vertical-align: middle !important;
+}

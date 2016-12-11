@@ -1,0 +1,53 @@
+<div class="container">
+    <h2> Add an availability </h2>
+    <form>
+        <div class="form-group">
+            <div ng-show="model.error" class="alert alert-danger" role="alert">{{model.error}}</div>
+            <label for="availability_day"> Day </label>
+            <select class="form-control"
+                    id="availability_day"
+                    ng-model="model.day">
+                <option ng-repeat="d in model.days"
+                        value="{{d}}">
+                    {{d}}
+                </option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="start"> Start Time </label>
+            <select class="form-control"
+                    id="start"
+                    ng-model="model.start">
+                <option ng-repeat="time in model.hours"
+                        value="{{time}}" ng-if="time < 10">
+                    0{{time}}:00
+                </option>
+                <option ng-repeat="time in model.hours"
+                        value="{{time}}" ng-if="time >= 10">
+                    {{time}}:00
+                </option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="end"> End Time </label>
+            <select class="form-control"
+                    id="end"
+                    ng-model="model.end">
+                <option ng-repeat="time in model.hours"
+                        value="{{time}}" ng-if="time < 10">
+                    0{{time}}:00
+                </option>
+                <option ng-repeat="time in model.hours"
+                        value="{{time}}" ng-if="time >= 10">
+                    {{time}}:00
+                </option>
+            </select>
+        </div>
+        <div class="form-group">
+            <button ng-click="model.addAvailability()" class="btn btn-success btn-block">Add</button>
+        </div>
+    </form>
+    {{model.day}}
+    {{model.start}}
+    {{model.end}}
+</div>

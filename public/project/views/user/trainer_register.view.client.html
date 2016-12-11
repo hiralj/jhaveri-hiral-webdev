@@ -1,0 +1,58 @@
+<!--<script>-->
+    <!--$(function () {-->
+        <!--$("#datepicker").datepicker({-->
+            <!--dateFormat: 'mm/dd/yy',-->
+            <!--changeMonth: true,-->
+            <!--changeYear: true,-->
+            <!--yearRange: '-100y:c+nn',-->
+            <!--maxDate: '-1d'-->
+        <!--});-->
+    <!--});-->
+<!--</script>-->
+<script src="js/custom.js"></script>
+
+<div class="container">
+    <h1>Trainer Register</h1>
+    <div ng-show="model.error" class="alert alert-danger" role="alert">{{model.error}}</div>
+    <input type="text"
+           class="form-control"
+           placeholder="username"
+           ng-model="model.trainer.username"/>
+    <input type="password"
+           class="form-control"
+           placeholder="password"
+           ng-model="model.trainer.password"/>
+    <input type="password"
+           class="form-control"
+           placeholder="reenter password"
+           ng-model="model.trainer.repassword"/>
+    <input type="text"
+           class="form-control"
+           placeholder="First Name"
+           ng-model="model.trainer.firstName"/>
+    <input type="text"
+           class="form-control"
+           placeholder="Last Name"
+           ng-model="model.trainer.lastName"/>
+    <input type="text"
+           id="datepicker"
+           class="form-control"
+           placeholder="Date of Birth"
+           ng-model="model.trainer.dob"/>
+    <input type="text"
+           class="form-control"
+           placeholder="Email"
+           ng-model="model.trainer.email"/>
+    <input type="text"
+           class="form-control"
+           placeholder="Phone"
+           ng-model="model.trainer.phone"/>
+    <input type="text"
+           class="form-control"
+           placeholder="Training Experience e.g. 3"
+           ng-model="model.trainer.trainingExperience"/>
+    <a ng-click="model.register(model.trainer)"
+       class="btn btn-primary btn-block">Register</a>
+    <a class="btn btn-danger  btn-block"
+       href="#/login">Cancel</a>
+</div>

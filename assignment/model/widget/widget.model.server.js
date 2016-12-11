@@ -1,16 +1,8 @@
-module.exports = function () {
+module.exports = function (connection) {
     var model = {};
     var maxPriority;
-    var mongoose = require("mongoose");
     var WidgetSchema = require("./widget.schema.server")();
-    var WidgetModel = mongoose.model("WidgetModel", WidgetSchema);
-
-    var SampleSchema = mongoose.Schema({
-        name: String,
-        priority: Number
-    });
-
-    var SampleModel = mongoose.model("SampleModel", SampleSchema);
+    var WidgetModel = connection.model("WidgetModel", WidgetSchema);
 
 
     var api = {

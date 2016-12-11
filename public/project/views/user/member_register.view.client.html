@@ -1,0 +1,54 @@
+<!--<script>-->
+    <!--$(function () {-->
+        <!--$("#datepicker").datepicker({-->
+            <!--dateFormat: 'mm/dd/yy',-->
+            <!--changeMonth: true,-->
+            <!--changeYear: true,-->
+            <!--yearRange: '-100y:c+nn',-->
+            <!--maxDate: '-1d'-->
+        <!--});-->
+    <!--});-->
+<!--</script>-->
+<script src=js/custom.js"></script>
+
+<div class="container">
+    <h1>Member Register</h1>
+    <div ng-show="model.error" class="alert alert-danger" role="alert">{{model.error}}</div>
+    <input type="text"
+           class="form-control"
+           placeholder="username"
+           ng-model="model.member.username"/>
+    <input type="password"
+           class="form-control"
+           placeholder="password"
+           ng-model="model.member.password"/>
+    <input type="password"
+           class="form-control"
+           placeholder="reenter password"
+           ng-model="model.member.repassword"/>
+    <input type="text"
+           class="form-control"
+           placeholder="First Name"
+           ng-model="model.member.firstName"/>
+    <input type="text"
+           class="form-control"
+           placeholder="Last Name"
+           ng-model="model.member.lastName"/>
+    <input type="text"
+           id="datepicker"
+           class="form-control"
+           placeholder="Date of Birth"
+           ng-model="model.member.dob"/>
+    <input type="text"
+           class="form-control"
+           placeholder="Email"
+           ng-model="model.member.email"/>
+    <input type="text"
+           class="form-control"
+           placeholder="Phone"
+           ng-model="model.member.phone"/>
+    <a ng-click="model.register(model.member)"
+       class="btn btn-primary btn-block">Register</a>
+    <a class="btn btn-danger  btn-block"
+       href="#/login">Cancel</a>
+</div>

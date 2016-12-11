@@ -1,0 +1,55 @@
+<div class="container">
+    <div class="jumbotron">
+        <h3>Pending Appointments</h3>
+        <table class="table">
+            <tr ng-repeat="appointment in model.pendingAppointments">
+                <td>{{appointment._member.firstName}} {{appointment._member.lastName}}</td>
+                <td>{{appointment.day}} - {{model.showTime(appointment.start)}} to {{model.showTime(appointment.end)}}
+                </td>
+                <td>
+                    <button class="btn btn-success"
+                            ng-click="model.confirmAppointment(appointment)">
+                        <span class="glyphicon glyphicon-ok"></span>
+                    </button>
+                    <button class="btn btn-danger"
+                            ng-click="model.rejectAppointment(appointment)">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </td>
+            </tr>
+        </table>
+        <span ng-if="model.pendingAppointments.length == 0">No Pending Appointments</span>
+    </div>
+    <br/>
+
+    <div class="jumbotron">
+        <h3>Accepted Appointments</h3>
+        <span ng-if="model.acceptedAppointments.length == 0">No Accepted Appointments</span>
+        <table class="table">
+            <tr ng-repeat="appointment in model.acceptedAppointments">
+                <td>{{appointment._member.firstName}} {{appointment._member.lastName}}</td>
+                <td>{{appointment.day}} - {{model.showTime(appointment.start)}} to {{model.showTime(appointment.end)}}
+                </td>
+                <td>
+                    <button class="btn btn-danger"
+                            ng-click="model.deleteAppointment(appointment)">
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <a class="btn btn-primary btn-block"
+       href="#/fitness/trainer/{{model.trainerId}}/availability">
+        Availabilities
+    </a>
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <a href="#/api/fitness/trainer/{{model.userId}}" class="navbar-text">
+            <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+        </a>
+    </div>
+</nav>

@@ -1,0 +1,44 @@
+<div class="container">
+    <h2>Schedule Appointment</h2>
+    <br/>
+    <form>
+        <div class="form-group">
+            <div ng-show="model.error" class="alert alert-danger" role="alert">{{model.error}}</div>
+            <label for="trainer"> Trainer </label>
+            <select class="form-control"
+                    id="trainer"
+                    ng-model="model.appointment.trainerId"
+                    ng-change="model.populateFreeSlots()">
+                <option ng-repeat="t in model.trainers"
+                        value="{{t._id}}">
+                    {{t.firstName}} {{t.lastName}}
+                </option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label> Select one of following free slot: </label>
+            <table class="table" ng-repeat="daySlots in model.freeSlots">
+                <thead align="center">
+                    <td colspan="2">{{daySlots.day}}</td>
+                </thead>
+                <tr ng-repeat="slot in daySlots.slots">
+                    <td>
+                        <label for="{{daySlots.day}}{{slot.start}}{{slot.end}}" class="slot-label">
+                            {{model.showTime(slot.start)}} to {{model.showTime(slot.end)}}
+                        </label>
+                    </td>
+                    <td>
+                        <input id="{{daySlots.day}}{{slot.start}}{{slot.end}}"
+                               value="{{daySlots.day}} {{slot.start}} {{slot.end}}"
+                               ng-model="model.appointment.slot"
+                               type="radio"
+                               name="slot"/>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="form-group">
+            <button class="btn btn-success btn-block" ng-click="model.requestAppointment()">Request Appointment</button>
+        </div>
+    </form>
+</div>

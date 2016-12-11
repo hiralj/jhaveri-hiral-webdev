@@ -1,8 +1,7 @@
-module.exports = function () {
+module.exports = function (connection) {
     var model = {};
-    var mongoose = require("mongoose");
     var PageSchema = require("./page.schema.server")();
-    var PageModel = mongoose.model("PageModel", PageSchema);
+    var PageModel = connection.model("PageModel", PageSchema);
 
     var api = {
         setModel: setModel,

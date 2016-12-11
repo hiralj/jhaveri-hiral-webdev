@@ -1,0 +1,57 @@
+<script src="js/custom.js"></script>
+
+<div class="container">
+    <datalist id="languages">
+        <div ng-repeat="value in model.foods">
+            <option value="{{value}}">
+        </div>
+    </datalist>
+    <br/>
+    Date:
+    <input type="text"
+           id="datepicker"
+           type="date"
+           class="form-control"
+           placeholder="Date"
+           ng-model="model.dateSelected"
+    />
+    <br/>
+    <input type="text"
+           class="form-control"
+           placeholder="Quinoa"
+           ng-model="model.searchText"
+           ng-change="model.searchChange()"
+           list="languages"
+    />
+    <button ng-click="model.searchFood()" class="btn btn-primary btn-block">Search</button>
+    <br/>
+    <table class="table table-condensed" ng-if="model.foodSelected">
+        <tr ng-repeat="food in model.foodSelected">
+            <td><img src="{{food.thumbnail}}" height="30px" width="35px"/></td>
+            <td>{{food.name}}</td>
+            <td>{{food.qty}}</td>
+            <td>{{food.nutrient_value}} Cal</td>
+        </tr>
+    </table>
+
+    <div class="list-group">
+        <div ng-repeat="option in model.options">
+            <a ng-click="model.addFood(option)" class="list-group-item" style="position: relative;">
+                <h4 class="list-group-item-heading">{{option.item_name}}</h4>
+                <h5 class="list-group-item-heading">{{option.brand_name}}</h5>
+                <p class="list-group-item-text">Calories: {{option.nutrient_value}}</p>
+                <p class="list-group-item-text">Qty: {{option.serving_qty}} {{option.serving_uom}}</p>
+                <img src="{{option.thumbnail}}" class="img-responsive img-rounded pull-right"
+                     style="position:absolute; top: 5px; right: 5px"/>
+            </a>
+        </div>
+    </div>
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <a href="#/api/fitness/member/{{model.userId}}" class="navbar-text">
+            <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+        </a>
+    </div>
+</nav>

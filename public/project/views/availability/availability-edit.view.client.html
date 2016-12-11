@@ -1,0 +1,46 @@
+<div class="container">
+    <h2> Edit an availability </h2>
+    <form>
+        <div class="form-group">
+            <div ng-show="model.error" class="alert alert-danger" role="alert">{{model.error}}</div>
+            <label for="availability_day"> Day </label>
+            <select class="form-control"
+                    id="availability_day"
+                    ng-model="model.availability.day">
+                <option ng-repeat="d in model.days"
+                        value="{{d}}">
+                    {{d}}
+                </option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="start"> Start Time </label>
+            <select class="form-control"
+                    id="start"
+                    ng-model="model.availability.start">
+                <option ng-repeat="time in model.hours"
+                        value="{{time}}">
+                    {{model.showTime(time)}}
+                </option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="end"> End Time </label>
+            <select class="form-control"
+                    id="end"
+                    ng-model="model.availability.end">
+                <option ng-repeat="time in model.hours"
+                        value="{{time}}">
+                    {{model.showTime(time)}}
+                </option>
+            </select>
+        </div>
+        <div class="form-group">
+            <button ng-click="model.updateAvailability()" class="btn btn-warning btn-block">Update</button>
+            <button ng-click="model.deleteAvailability()" class="btn btn-danger btn-block">Delete</button>
+        </div>
+    </form>
+    {{model.availability.day}}
+    {{model.availability.start}}
+    {{model.availability.end}}
+</div>
