@@ -11,8 +11,6 @@ var nutritionix = require('nutritionix')({
     appKey: 'cc2652140ce138e579315e4b457170f0'
 }, false);
 
-console.log("Print anything from node");
-
 app.get("/api/search/autocomplete/:food_prefix", autocomplete_food_item);
 app.get("/api/search/food/:food", find_food);
 
@@ -36,7 +34,7 @@ function find_food(req, res) {
     nutritionix
         .search({
             q: food,
-            limit: 30,
+            limit: 10,
             search_nutrient: 'calories'
         })
         .then(
@@ -45,11 +43,6 @@ function find_food(req, res) {
             }
         );
 }
-
-var ingredients = [
-    '1 tbsp sugar',
-    '1 red pepper'
-];
 
 // ensure you are passing a string with queries delimited by new lines.
 // nutritionix

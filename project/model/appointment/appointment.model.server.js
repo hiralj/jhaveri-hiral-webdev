@@ -67,7 +67,7 @@ module.exports = function (connection) {
     function getAppointmentsOfMember(memberId, status) {
         return AppointmentModel
             .find({_member: memberId, status: status})
-            .populate(_member)
+            .populate('_trainer')
             .exec(
                 function (err, appointments) {
                     return appointments;

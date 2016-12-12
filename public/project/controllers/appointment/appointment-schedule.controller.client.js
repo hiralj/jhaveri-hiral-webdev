@@ -3,7 +3,7 @@
         .module("FitnessMaker")
         .controller("AppointmentSchedule", AppointmentSchedule);
 
-    function AppointmentSchedule($routeParams, UserService, AvailabilityService, AppointmentService) {
+    function AppointmentSchedule($routeParams, UserService, AvailabilityService, AppointmentService, $location) {
         var vm = this;
         vm.memberId = $routeParams["userId"];
         vm.populateFreeSlots = populateFreeSlots;
@@ -21,7 +21,7 @@
         }
 
         function populateFreeSlots() {
-            var availabilities = "Somethign else";
+            var availabilities;
             var appointments;
             AvailabilityService
                 .findAllAvailabilitiesForTrainer(vm.appointment.trainerId)
@@ -41,13 +41,6 @@
         }
 
         function computeFreeSlots(availabilities, appointments) {
-            // appointments.push({
-            //     _id: "sdjfhskd",
-            //     day: 'Monday',
-            //     start: 13,
-            //     end: 14,
-            //     _trainer: "daff"
-            // });
             var choppedAvailabilities = [];
             for(var i in availabilities) {
                 var cur = availabilities[i].start;
@@ -126,8 +119,8 @@
             AppointmentService
                 .createPendingAppointment(vm.appointment.trainerId, vm.memberId, newAppointment)
                 .success(
-                    function (appointmentObj) {
-                        console.log(appointmentObj);
+                    function () {
+                        $location.url('/fitness/member/' + vm.memberId + '/dashboard');
                     }
                 );
         }

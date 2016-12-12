@@ -1,57 +1,91 @@
-<script src="js/custom.js"></script>
-
-<div class="container">
-    <datalist id="languages">
-        <div ng-repeat="value in model.foods">
-            <option value="{{value}}">
-        </div>
-    </datalist>
-    <br/>
-    Date:
-    <input type="text"
-           id="datepicker"
-           type="date"
-           class="form-control"
-           placeholder="Date"
-           ng-model="model.dateSelected"
-    />
-    <br/>
-    <input type="text"
-           class="form-control"
-           placeholder="Quinoa"
-           ng-model="model.searchText"
-           ng-change="model.searchChange()"
-           list="languages"
-    />
-    <button ng-click="model.searchFood()" class="btn btn-primary btn-block">Search</button>
-    <br/>
-    <table class="table table-condensed" ng-if="model.foodSelected">
-        <tr ng-repeat="food in model.foodSelected">
-            <td><img src="{{food.thumbnail}}" height="30px" width="35px"/></td>
-            <td>{{food.name}}</td>
-            <td>{{food.qty}}</td>
-            <td>{{food.nutrient_value}} Cal</td>
-        </tr>
-    </table>
-
-    <div class="list-group">
-        <div ng-repeat="option in model.options">
-            <a ng-click="model.addFood(option)" class="list-group-item" style="position: relative;">
-                <h4 class="list-group-item-heading">{{option.item_name}}</h4>
-                <h5 class="list-group-item-heading">{{option.brand_name}}</h5>
-                <p class="list-group-item-text">Calories: {{option.nutrient_value}}</p>
-                <p class="list-group-item-text">Qty: {{option.serving_qty}} {{option.serving_uom}}</p>
-                <img src="{{option.thumbnail}}" class="img-responsive img-rounded pull-right"
-                     style="position:absolute; top: 5px; right: 5px"/>
-            </a>
-        </div>
-    </div>
-</div>
-
-<nav class="navbar navbar-default navbar-fixed-bottom">
+<nav class="navbar navbar-default navbar-inverse">
     <div class="container-fluid">
-        <a href="#/api/fitness/member/{{model.userId}}" class="navbar-text">
-            <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-        </a>
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#/">Fitness 4 Life</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="#/fitness/member/{{model.userId}}/dashboard">Dashboard</a>
+                </li>
+                <li>
+                    <a href="#/fitness/member/{{model.userId}}">Profile</a>
+                </li>
+            </ul>
+        </div>
     </div>
 </nav>
+<div class="container">
+    <div class="jumbotron">
+        <h3>Calorie Tracker</h3>
+        <h5>
+            <span class="glyphicon glyphicon-chevron-left"
+                  aria-hidden="true"
+                  ng-click="model.decrementDate()"></span>
+            Your calories for {{model.representDate()}}: {{model.totalCalories}}
+            <span class="glyphicon glyphicon-chevron-right pull-right"
+                  aria-hidden="true"
+                  ng-click="model.incrementDate()"></span>
+        </h5>
+        <div class="progress">
+            <div class="progress-bar progress-bar-success"
+                 role="progressbar"
+                 style="width: {{model.caloriePercentage}}%"/>
+        </div>
+        <a class="btn btn-primary btn-block"
+           ng-click="model.manageFood()">
+            Manage your food
+        </a>
+    </div>
+    <div class="jumbotron">
+        <h3>Accepted Appointments</h3>
+        <span ng-if="model.acceptedAppointments.length == 0">No Accepted Appointments</span>
+        <table class="table">
+            <tr ng-repeat="appointment in model.acceptedAppointments">
+                <td>{{appointment._trainer.firstName}} {{appointment._trainer.lastName}}</td>
+                <td>{{appointment.day}} - {{model.showTime(appointment.start)}} to {{model.showTime(appointment.end)}}
+                </td>
+                <td>
+                    <button class="btn btn-danger"
+                            ng-click="model.deleteAppointment(appointment)">
+                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                    </button>
+                </td>
+            </tr>
+        </table>
+        <a class="btn btn-primary btn-block"
+           href="#/fitness/member/{{model.userId}}/appointment_schedule">
+            Schedule Personal Training
+        </a>
+    </div>
+    <div class="jumbotron">
+        <h3>Pending Appointments</h3>
+        <span ng-if="model.pendingAppointments.length == 0">No Pending Appointments</span>
+        <table class="table">
+            <tr ng-repeat="appointment in model.pendingAppointments">
+                <td>{{appointment._trainer.firstName}} {{appointment._trainer.lastName}}</td>
+                <td>{{appointment.day}} - {{model.showTime(appointment.start)}} to {{model.showTime(appointment.end)}}
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="jumbotron">
+        <h3>Rejected Appointments</h3>
+        <span ng-if="model.rejectedAppointments.length == 0">No Rejected Appointments</span>
+        <table class="table">
+            <tr ng-repeat="appointment in model.rejectedAppointments">
+                <td>{{appointment._trainer.firstName}} {{appointment._trainer.lastName}}</td>
+                <td>{{appointment.day}} - {{model.showTime(appointment.start)}} to {{model.showTime(appointment.end)}}
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+</div>

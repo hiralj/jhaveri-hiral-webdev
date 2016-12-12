@@ -5,9 +5,6 @@
 
     function Config($routeProvider) {
         $routeProvider
-            .when("/sample", {
-                templateUrl: "views/dashboard/sample.html"
-            })
             .when("/", {
                 templateUrl: "home.html"
             })
@@ -16,12 +13,12 @@
                 controller: "LoginController",
                 controllerAs: "model"
             })
-            .when("/api/fitness/trainer/:userId", {
+            .when("/fitness/trainer/:userId", {
                 templateUrl: "views/user/trainer_profile.view.client.html",
                 controller: "TrainerProfileController",
                 controllerAs: "model"
             })
-            .when("/api/fitness/member/:userId", {
+            .when("/fitness/member/:userId", {
                 templateUrl: "views/user/member_profile.view.client.html",
                 controller: "MemberProfileController",
                 controllerAs: "model"
@@ -41,19 +38,19 @@
                 controller: "MemberDashboard",
                 controllerAs: "model"
             })
+            .when("/fitness/trainer/:userId/dashboard", {
+                templateUrl: "views/dashboard/trainer_dashboard.view.client.html",
+                controller: "TrainerDashboard",
+                controllerAs: "model"
+            })
             .when("/fitness/member/:userId/appointment_schedule", {
                 templateUrl: "views/appointment/appointment-schedule.view.client.html",
                 controller: "AppointmentSchedule",
                 controllerAs: "model"
             })
-            .when("/api/fitness/user/:userId/manage_calories", {
+            .when("/fitness/member/:userId/manage_calories/:date", {
                 templateUrl: "views/food/manage_calories.view.client.html",
                 controller: "ManageCalories",
-                controllerAs: "model"
-            })
-            .when("/fitness/trainer/:userId/dashboard", {
-                templateUrl: "views/dashboard/trainer_dashboard.view.client.html",
-                controller: "TrainerDashboard",
                 controllerAs: "model"
             })
             .when("/fitness/trainer/:userId/availability", {

@@ -1,3 +1,96 @@
+<nav class="navbar navbar-default navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#/">Fitness 4 Life</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="#/fitness/trainer/{{model.trainerId}}/dashboard">Dashboard</a>
+                </li>
+                <li>
+                    <a href="#/fitness/trainer/{{model.trainerId}}">Profile</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
 <div class="container">
-    Hello from Trainer profile
+    <h2>Trainer Profile</h2>
+    <form>
+        <div class="form-group">
+            <label for="username">
+                Username
+            </label>
+            <input type="text"
+                   class="form-control"
+                   id="username"
+                   name="username"
+                   placeholder="Username"
+                   ng-model="model.trainer.username"/>
+        </div>
+        <div class="form-group">
+            <label for="email">
+                Email address
+            </label>
+            <input type="email"
+                   class="form-control"
+                   id="email"
+                   name="email"
+                   placeholder="alice@wonderland.com"
+                   ng-model="model.trainer.email"/>
+        </div>
+        <div class="form-group">
+            <label for="first-name">
+                First Name
+            </label>
+            <input type="text"
+                   class="form-control"
+                   id="first-name"
+                   name="first-name"
+                   placeholder="Alice"
+                   ng-model="model.trainer.firstName"/>
+        </div>
+        <div class="form-group">
+            <label for="last-name">
+                Last Name
+            </label>
+            <input type="text"
+                   class="form-control"
+                   id="last-name"
+                   name="last-name"
+                   placeholder="Wonderland"
+                   ng-model="model.trainer.lastName"/>
+        </div>
+        <div class="form-group">
+            <label for="phone">
+                Phone
+            </label>
+            <input type="text"
+                   class="form-control"
+                   id="phone"
+                   name="phone"
+                   ng-model="model.trainer.phone"/>
+        </div>
+        <div class="form-group">
+            <label for="dob">
+                Date of Birth
+            </label>
+            <input type="text"
+                   class="form-control"
+                   id="dob"
+                   name="dob"
+                   ng-model="model.trainer.dob"/>
+        </div>
+    </form>
+
+    <a class="btn btn-danger  btn-block"
+       href="#/">Logout</a>
 </div>
