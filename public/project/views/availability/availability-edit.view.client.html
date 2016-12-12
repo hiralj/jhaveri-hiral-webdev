@@ -24,11 +24,11 @@
 </nav>
 
 <div class="container">
-    <h2> Edit an availability </h2>
+    <h2 class="white"> Edit an availability </h2>
     <form>
         <div class="form-group">
             <div ng-show="model.error" class="alert alert-danger" role="alert">{{model.error}}</div>
-            <label for="availability_day"> Day </label>
+            <label for="availability_day" class="white"> Day </label>
             <select class="form-control"
                     id="availability_day"
                     ng-model="model.availability.day">
@@ -39,7 +39,7 @@
             </select>
         </div>
         <div class="form-group">
-            <label for="start"> Start Time </label>
+            <label for="start" class="white"> Start Time </label>
             <select class="form-control"
                     id="start"
                     ng-model="model.availability.start">
@@ -50,7 +50,7 @@
             </select>
         </div>
         <div class="form-group">
-            <label for="end"> End Time </label>
+            <label for="end" class="white"> End Time </label>
             <select class="form-control"
                     id="end"
                     ng-model="model.availability.end">

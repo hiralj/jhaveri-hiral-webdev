@@ -20,10 +20,10 @@
         vm.foods = [];
 
         function searchChange() {
-            // $http.get("/api/search/autocomplete/" + vm.searchText)
-            //     .success(function (foodList) {
-            //         vm.foods = foodList;
-            //     });
+            $http.get("/api/search/autocomplete/" + vm.searchText)
+                .success(function (foodList) {
+                    vm.foods = foodList;
+                });
         }
 
         function dateChange() {

@@ -14,8 +14,7 @@
                 .createUser(member)
                 .success(
                     function (memberObj) {
-                        console.log(memberObj._id);
-                        $location.url("/member_dashboard");
+                        $location.url('/fitness/member/' + memberObj._id + '/dashboard');
                     }
                 );
         }

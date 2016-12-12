@@ -8,13 +8,12 @@
         vm.register = register;
 
         function register(trainer) {
-            // Use vm.member
             trainer.role = "Trainer";
             UserService
                 .createUser(trainer)
                 .success(
                     function (trainerObj) {
-                        $location.url("/api/fitness/user/" + trainerObj._id + "/trainer_dashboard");
+                        $location.url('/fitness/trainer/' + trainerObj._id + '/dashboard');
                     }
                 );
         }

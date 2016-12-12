@@ -14,7 +14,6 @@
         return api;
 
         function createUser(user) {
-            // console.log(user);
             return $http.post('/api/fitness/user', user);
         }
 

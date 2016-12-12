@@ -23,12 +23,12 @@
     </div>
 </nav>
 <div class="container">
-    <h2>Schedule Appointment</h2>
+    <h2 class="white">Schedule Appointment</h2>
     <br/>
     <form>
         <div class="form-group">
             <div ng-show="model.error" class="alert alert-danger" role="alert">{{model.error}}</div>
-            <label for="trainer"> Trainer </label>
+            <label for="trainer" class="white"> Trainer: </label>
             <select class="form-control"
                     id="trainer"
                     ng-model="model.appointment.trainerId"
@@ -40,9 +40,9 @@
             </select>
         </div>
         <div class="form-group">
-            <label> Select one of following free slot: </label>
-            <table class="table" ng-repeat="daySlots in model.freeSlots">
-                <thead align="center">
+            <label class="white"> Select one of following free slot: </label>
+            <table class="table food" ng-repeat="daySlots in model.freeSlots">
+                <thead>
                     <td colspan="2">{{daySlots.day}}</td>
                 </thead>
                 <tr ng-repeat="slot in daySlots.slots">

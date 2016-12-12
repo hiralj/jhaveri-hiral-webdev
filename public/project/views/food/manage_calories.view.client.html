@@ -2,7 +2,8 @@
 <nav class="navbar navbar-default navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -30,7 +31,8 @@
         </div>
     </datalist>
     <br/>
-    Date:
+    <span class="white"> Date:
+        </span>
     <input type="text"
            id="datepicker"
            type="date"
@@ -49,7 +51,7 @@
     />
     <button ng-click="model.searchFood()" class="btn btn-primary btn-block">Search</button>
     <br/>
-    <table class="table table-condensed" ng-if="model.foodSelected">
+    <table class="table table-condensed food" ng-if="model.foodSelected">
         <tr ng-repeat="food in model.foodSelected">
             <td><img src="{{food.thumbnail}}" height="30px" width="35px"/></td>
             <td>{{food.name}}</td>
@@ -65,7 +67,10 @@
                 <h5 class="list-group-item-heading">{{option.brand_name}}</h5>
                 <p class="list-group-item-text">Calories: {{option.nutrient_value}}</p>
                 <p class="list-group-item-text">Qty: {{option.serving_qty}} {{option.serving_uom}}</p>
-                <img src="{{option.thumbnail}}" class="img-responsive img-rounded pull-right"
+                <img src="{{option.thumbnail}}"
+                     class="img-responsive img-rounded pull-right"
+                     height="30px"
+                     width="35px"
                      style="position:absolute; top: 5px; right: 5px"/>
             </a>
         </div>

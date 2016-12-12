@@ -6,7 +6,6 @@
     function TrainerProfileController($routeParams, UserService) {
         var vm = this;
         vm.trainerId = $routeParams["userId"];
-        console.log(vm.trainerId);
 
         function init() {
             UserService
